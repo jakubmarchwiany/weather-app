@@ -14,10 +14,16 @@ export function WeathersScrollView(): JSX.Element {
 		dispatch(appActions.setFavoriteWeather({ favorite, id }));
 	};
 
+	const favoritesCities = [...weathers].filter((w) => w.favorite === true);
+	const othersCities = [...weathers].filter((w) => w.favorite === false);
+
 	return (
 		<View flex={1}>
 			<ScrollView marginTop="$3" space="$2.5">
-				{weathers.map((weather) => (
+				{favoritesCities.map((weather) => (
+					<WeatherCard key={weather.id} {...weather} setFavorite={handleSetFavorite} />
+				))}
+				{othersCities.map((weather) => (
 					<WeatherCard key={weather.id} {...weather} setFavorite={handleSetFavorite} />
 				))}
 			</ScrollView>
