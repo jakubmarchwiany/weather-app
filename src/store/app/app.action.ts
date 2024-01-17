@@ -64,3 +64,20 @@ export const getCityWeatherInfo =
 				}
 			});
 	};
+
+export const updateCityWeatherInfo =
+	(oldCityWeatherInfo: CityWeatherInfo): AppThunk =>
+	(appDispatch: (arg0: unknown) => void) => {
+		myFetch<WeatherApiData>("/weather", {
+			body: { cityName: oldCityWeatherInfo.cityName },
+			method: "POST"
+		}).then((resCityWeatherInfo) => {
+			const cityWeatherInfo = {
+				...resCityWeatherInfo,
+				favorite: oldCityWeatherInfo.favorite,
+				id: oldCityWeatherInfo.id
+			} as CityWeatherInfo;
+
+			appDispatch(appActions.updateCityWeatherInfo({ cityWeatherInfo }));
+		});
+	};

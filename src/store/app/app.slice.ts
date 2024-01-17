@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { createSlice } from "@reduxjs/toolkit";
 
 import {
@@ -5,7 +6,8 @@ import {
 	deleteAllDateReducer,
 	deleteNoFavoriteCitiesReducer,
 	setFavoriteCityReducer,
-	setThemeModeReducer
+	setThemeModeReducer,
+	updateCityWeatherInfoReducer
 } from "./app.reducer";
 import { ThemeMode } from "./models/themeMode.enum";
 import { CityWeatherInfo } from "./models/weather.type";
@@ -24,12 +26,13 @@ const appSlice = createSlice({
 	initialState,
 	name: "app",
 	reducers: {
-		addCityWeatherInfo: addCityWeatherInfoReducer,
+		setThemeMode: setThemeModeReducer,
 		deleteAllDate: deleteAllDateReducer,
 
-		deleteNoFavoriteCities: deleteNoFavoriteCitiesReducer,
+		addCityWeatherInfo: addCityWeatherInfoReducer,
+		updateCityWeatherInfo: updateCityWeatherInfoReducer,
 		setFavoriteCity: setFavoriteCityReducer,
-		setThemeMode: setThemeModeReducer
+		deleteNoFavoriteCities: deleteNoFavoriteCitiesReducer
 	}
 });
 

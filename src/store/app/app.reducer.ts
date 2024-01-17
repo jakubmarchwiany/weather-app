@@ -46,3 +46,17 @@ export function deleteNoFavoriteCitiesReducer(state: AppState): AppState {
 		citiesWeatherInfo: [...state.citiesWeatherInfo].filter((w) => w.favorite)
 	};
 }
+
+export function updateCityWeatherInfoReducer(
+	state: AppState,
+	action: PayloadAction<{ cityWeatherInfo: CityWeatherInfo }>
+): AppState {
+	const { cityWeatherInfo } = action.payload;
+
+	return {
+		...state,
+		citiesWeatherInfo: state.citiesWeatherInfo.map((w) =>
+			w.id === cityWeatherInfo.id ? { ...cityWeatherInfo } : w
+		)
+	};
+}
