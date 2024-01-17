@@ -17,20 +17,3 @@ export function SettingsScreen(): JSX.Element {
 		</TouchableWithoutFeedback>
 	);
 }
-
-const styles = StyleSheet.create({
-	card: {
-		backgroundColor: "white",
-
-		paddingHorizontal: 25,
-		// borderRadius: 8,
-		paddingVertical: 45,
-		width: "100%"
-		// marginVertical: 10
-	},
-	heading: {
-		fontSize: 18,
-		fontWeight: "600",
-		marginBottom: 13
-	}
-});
