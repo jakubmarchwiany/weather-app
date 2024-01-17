@@ -1,4 +1,4 @@
-export type Weather = {
+export type CityWeatherInfo = {
 	cityName: string;
 	condition: string;
 	date: Date;

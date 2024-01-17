@@ -1,34 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import {
-	addWeatherReducer,
+	addCityWeatherInfoReducer,
 	deleteAllDateReducer,
 	deleteNoFavoriteCitiesReducer,
-	setFavoriteWeatherReducer,
+	setFavoriteCityReducer,
 	setThemeModeReducer
 } from "./app.reducer";
 import { ThemeMode } from "./models/themeMode.enum";
-import { Weather } from "./models/weather.type";
+import { CityWeatherInfo } from "./models/weather.type";
 
 export type AppState = {
+	citiesWeatherInfo: CityWeatherInfo[];
 	themeMode: ThemeMode;
-	weathers: Weather[];
 };
 
 const initialState: AppState = {
-	themeMode: ThemeMode.LIGHT,
-	weathers: []
+	citiesWeatherInfo: [],
+	themeMode: ThemeMode.LIGHT
 };
 
 const appSlice = createSlice({
 	initialState,
 	name: "app",
 	reducers: {
-		addWeather: addWeatherReducer,
+		addCityWeatherInfo: addCityWeatherInfoReducer,
 		deleteAllDate: deleteAllDateReducer,
 
 		deleteNoFavoriteCities: deleteNoFavoriteCitiesReducer,
-		setFavoriteWeather: setFavoriteWeatherReducer,
+		setFavoriteCity: setFavoriteCityReducer,
 		setThemeMode: setThemeModeReducer
 	}
 });

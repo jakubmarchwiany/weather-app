@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import { AppThunk } from "..";
 import { myFetch } from "../../utilities/myFetch";
 import { appActions } from "./app.slice";
-import { Weather } from "./models/weather.type";
+import { CityWeatherInfo } from "./models/weather.type";
 
 type WeatherApiData = {
 	cityName: string;
@@ -18,7 +18,7 @@ type WeatherApiData = {
 	windSpeed: number;
 };
 
-export const getWeatherForCity =
+export const getCityWeatherInfo =
 	(cityName: string): AppThunk =>
 	(appDispatch: (arg0: unknown) => void) => {
 		myFetch<WeatherApiData>("/weather", {
@@ -26,14 +26,14 @@ export const getWeatherForCity =
 			customError: true,
 			method: "POST"
 		})
-			.then((weatherInfo) => {
-				const fullWeather = {
-					...weatherInfo,
+			.then((resCityWeatherInfo) => {
+				const cityWeatherInfo = {
+					...resCityWeatherInfo,
 					favorite: false,
 					id: uuidv4()
-				} as Weather;
+				} as CityWeatherInfo;
 
-				appDispatch(appActions.addWeather({ weather: fullWeather }));
+				appDispatch(appActions.addCityWeatherInfo({ cityWeatherInfo }));
 			})
 			.catch((e) => {
 				if (e.statusCode == 404) {
@@ -55,7 +55,7 @@ export const getWeatherForCity =
 
 						{
 							onPress: (): void => {
-								appDispatch(getWeatherForCity(cityName));
+								appDispatch(getCityWeatherInfo(cityName));
 							},
 							style: "default",
 							text: "Try again"

@@ -2,7 +2,7 @@ import { Keyboard, TouchableWithoutFeedback } from "react-native";
 import { H1, YStack } from "tamagui";
 
 import { SearchCity } from "./components/SearchCity";
-import { WeathersScrollView } from "./components/WeathersScrollView";
+import { WeatherInfoList } from "./components/WeatherInfoList";
 
 export function HomeScreen(): JSX.Element {
 	return (
@@ -12,7 +12,7 @@ export function HomeScreen(): JSX.Element {
 
 				<SearchCity />
 
-				<WeathersScrollView />
+				<WeatherInfoList />
 			</YStack>
 		</TouchableWithoutFeedback>
 	);

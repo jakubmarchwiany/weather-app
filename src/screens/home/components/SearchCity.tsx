@@ -6,19 +6,19 @@ import { Keyboard } from "react-native";
 import { Button, Input, Text, YStack } from "tamagui";
 import { object, string } from "yup";
 
-import { getWeatherForCity } from "../../../store/app/app.action";
+import { getCityWeatherInfo } from "../../../store/app/app.action";
 import { useAppDispatch } from "../../../store/hooks";
 
 const SEARCH_CITY_FORM_STATE = {
-	text: ""
+	cityName: ""
 };
 
 const SEARCH_CITY_VALIDATION = object().shape({
-	text: string().required().min(2).max(20)
+	cityName: string().required().min(2).max(20)
 });
 
 export function SearchCity(): JSX.Element {
-	const formikRef = useRef<FormikProps<{ text: string }>>();
+	const formikRef = useRef<FormikProps<{ cityName: string }>>();
 
 	const dispatch = useAppDispatch();
 
@@ -35,7 +35,7 @@ export function SearchCity(): JSX.Element {
 			initialValues={SEARCH_CITY_FORM_STATE}
 			innerRef={(p) => p && (formikRef.current = p)}
 			onSubmit={(values, form) => {
-				dispatch(getWeatherForCity(values.text));
+				dispatch(getCityWeatherInfo(values.cityName));
 
 				form.resetForm();
 
@@ -47,13 +47,13 @@ export function SearchCity(): JSX.Element {
 				<YStack marginTop="$2" space="$1.5">
 					<Input
 						backgroundColor="$blue4"
-						onBlur={handleBlur("text")}
-						onChangeText={handleChange("text")}
+						onBlur={handleBlur("cityName")}
+						onChangeText={handleChange("cityName")}
 						placeholder="Wroclaw"
-						value={values.text}
+						value={values.cityName}
 						width="100%"
 					/>
-					{errors.text && dirty && <Text color="$red11">{errors.text}</Text>}
+					{errors.cityName && dirty && <Text color="$red11">{errors.cityName}</Text>}
 
 					<Button
 						alignSelf="center"

@@ -2,7 +2,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 
 import { AppState } from "./app.slice";
 import { ThemeMode } from "./models/themeMode.enum";
-import { Weather } from "./models/weather.type";
+import { CityWeatherInfo } from "./models/weather.type";
 
 export function setThemeModeReducer(
 	state: AppState,
@@ -13,20 +13,20 @@ export function setThemeModeReducer(
 	state.themeMode = themeMode;
 }
 
-export function addWeatherReducer(
+export function addCityWeatherInfoReducer(
 	state: AppState,
-	action: PayloadAction<{ weather: Weather }>
+	action: PayloadAction<{ cityWeatherInfo: CityWeatherInfo }>
 ): void {
-	const weather = action.payload.weather;
+	const { cityWeatherInfo } = action.payload;
 
-	state.weathers = [weather, ...state.weathers];
+	state.citiesWeatherInfo = [cityWeatherInfo, ...state.citiesWeatherInfo];
 }
 
 export function deleteAllDateReducer(state: AppState): void {
-	state.weathers = [];
+	state.citiesWeatherInfo = [];
 }
 
-export function setFavoriteWeatherReducer(
+export function setFavoriteCityReducer(
 	state: AppState,
 	action: PayloadAction<{ favorite: boolean; id: string }>
 ): AppState {
@@ -34,7 +34,7 @@ export function setFavoriteWeatherReducer(
 
 	return {
 		...state,
-		weathers: state.weathers.map((w) =>
+		citiesWeatherInfo: state.citiesWeatherInfo.map((w) =>
 			w.id === weatherToUpdateId ? { ...w, favorite: favoriteToSet } : w
 		)
 	};
@@ -43,6 +43,6 @@ export function setFavoriteWeatherReducer(
 export function deleteNoFavoriteCitiesReducer(state: AppState): AppState {
 	return {
 		...state,
-		weathers: [...state.weathers].filter((w) => w.favorite)
+		citiesWeatherInfo: [...state.citiesWeatherInfo].filter((w) => w.favorite)
 	};
 }

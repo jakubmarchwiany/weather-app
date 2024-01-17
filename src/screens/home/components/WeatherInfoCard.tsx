@@ -2,13 +2,13 @@ import { Droplet, Heart, RefreshCcw, Wind } from "@tamagui/lucide-icons";
 import React from "react";
 import { Text, XStack, YStack } from "tamagui";
 
-import { Weather } from "../../../store/app/models/weather.type";
+import { CityWeatherInfo } from "../../../store/app/models/weather.type";
 
 type Props = {
 	setFavorite: (id: string, favorite: boolean) => void;
 };
 
-export function WeatherCard({
+export function WeatherInfoCard({
 	cityName,
 	condition,
 	date,
@@ -18,7 +18,7 @@ export function WeatherCard({
 	setFavorite,
 	temperature,
 	windSpeed
-}: Weather & Props): JSX.Element {
+}: CityWeatherInfo & Props): JSX.Element {
 	return (
 		<XStack padding="$1">
 			<XStack
@@ -47,7 +47,7 @@ export function WeatherCard({
 						</Text>
 					</YStack>
 
-					<Text fontSize="$3" marginTop="$5">
+					<Text fontSize="$4" marginTop="$5">
 						{condition}
 					</Text>
 				</YStack>
