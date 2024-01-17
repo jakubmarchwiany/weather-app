@@ -1,7 +1,7 @@
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
 import { YStack } from "tamagui";
 
-import SearchCity from "./components/SearchCity";
+import { SearchCity } from "./components/SearchCity";
 
 export function HomeScreen(): JSX.Element {
 	return (

@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { setThemeModeReducer } from "./app.reducer";
+import { addWeatherReducer, setThemeModeReducer } from "./app.reducer";
 import { ThemeMode } from "./models/themeMode.enum";
+import { Weather } from "./models/weather.type";
 
 export type AppState = {
 	themeMode: ThemeMode;
+	weathers: Weather[];
 };
 
 const initialState: AppState = {
-	themeMode: ThemeMode.LIGHT
+	themeMode: ThemeMode.LIGHT,
+	weathers: []
 };
 
 const appSlice = createSlice({
 	initialState,
 	name: "app",
 	reducers: {
+		addWeather: addWeatherReducer,
+
 		setThemeMode: setThemeModeReducer
 	}
 });

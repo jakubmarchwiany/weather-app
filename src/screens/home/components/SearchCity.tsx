@@ -1,10 +1,13 @@
 import { useFocusEffect } from "@react-navigation/native";
-import { CopyPlus, Search } from "@tamagui/lucide-icons";
+import { Search } from "@tamagui/lucide-icons";
 import { Formik, FormikProps } from "formik";
 import React, { useCallback, useRef } from "react";
 import { Keyboard } from "react-native";
-import { Button, H1, Input, Label, Text, XStack, YStack } from "tamagui";
+import { Button, H1, Input, Text, YStack } from "tamagui";
 import { object, string } from "yup";
+
+import { getWeatherForCity } from "../../../store/app/app.action";
+import { useAppDispatch } from "../../../store/hooks";
 
 const SEARCH_CITY_FORM_STATE = {
 	text: ""
@@ -14,8 +17,10 @@ const SEARCH_CITY_VALIDATION = object().shape({
 	text: string().required().min(2).max(20)
 });
 
-export default function SearchCity(): JSX.Element {
+export function SearchCity(): JSX.Element {
 	const formikRef = useRef<FormikProps<{ text: string }>>();
+
+	const dispatch = useAppDispatch();
 
 	useFocusEffect(
 		useCallback(() => {
@@ -30,6 +35,8 @@ export default function SearchCity(): JSX.Element {
 			initialValues={SEARCH_CITY_FORM_STATE}
 			innerRef={(p) => p && (formikRef.current = p)}
 			onSubmit={(values, form) => {
+				dispatch(getWeatherForCity(values.text));
+
 				form.resetForm();
 
 				Keyboard.dismiss();
