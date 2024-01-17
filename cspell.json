@@ -1,0 +1,23 @@
+{
+	"dictionaries": ["typescript", "css"],
+	"language": "en",
+	"words": [
+		"commitlint",
+		"knip",
+		"lucide",
+		"radiused",
+		"reduxjs",
+		"Tamagui",
+		"uuidv",
+		"formik",
+		"persistor"
+	],
+	"ignorePaths": [
+		"node_modules",
+		"build",
+		"bun.lockb",
+		".commitlint.config.cjs",
+		".expo",
+		"cspell.json"
+	]
+}
