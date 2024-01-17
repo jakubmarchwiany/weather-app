@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addWeatherReducer, deleteAllDateReducer, setThemeModeReducer } from "./app.reducer";
+import {
+	addWeatherReducer,
+	deleteAllDateReducer,
+	setFavoriteWeatherReducer,
+	setThemeModeReducer
+} from "./app.reducer";
 import { ThemeMode } from "./models/themeMode.enum";
 import { Weather } from "./models/weather.type";
 
@@ -19,8 +24,9 @@ const appSlice = createSlice({
 	name: "app",
 	reducers: {
 		addWeather: addWeatherReducer,
-
 		deleteAllDate: deleteAllDateReducer,
+
+		setFavoriteWeather: setFavoriteWeatherReducer,
 		setThemeMode: setThemeModeReducer
 	}
 });

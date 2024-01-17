@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Alert } from "react-native";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 
 import { AppThunk } from "..";
 import { myFetch } from "../../utilities/myFetch";
@@ -27,7 +29,8 @@ export const getWeatherForCity =
 			.then((weatherInfo) => {
 				const fullWeather = {
 					...weatherInfo,
-					favorite: false
+					favorite: false,
+					id: uuidv4()
 				} as Weather;
 
 				appDispatch(appActions.addWeather({ weather: fullWeather }));

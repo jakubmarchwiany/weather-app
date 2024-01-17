@@ -25,3 +25,17 @@ export function addWeatherReducer(
 export function deleteAllDateReducer(state: AppState): void {
 	state.weathers = [];
 }
+
+export function setFavoriteWeatherReducer(
+	state: AppState,
+	action: PayloadAction<{ favorite: boolean; id: string }>
+): AppState {
+	const { favorite: favoriteToSet, id: weatherToUpdateId } = action.payload;
+
+	return {
+		...state,
+		weathers: state.weathers.map((w) =>
+			w.id === weatherToUpdateId ? { ...w, favorite: favoriteToSet } : w
+		)
+	};
+}

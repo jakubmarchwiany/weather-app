@@ -4,6 +4,7 @@ export type Weather = {
 	date: Date;
 	favorite: boolean;
 	humidity: number;
+	id: string;
 	temperature: number;
 	windSpeed: number;
 };
