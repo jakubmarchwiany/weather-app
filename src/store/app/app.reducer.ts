@@ -19,5 +19,5 @@ export function addWeatherReducer(
 ): void {
 	const weather = action.payload.weather;
 
-	state.weathers = [...state.weathers, weather];
+	state.weathers = [weather, ...state.weathers];
 }
