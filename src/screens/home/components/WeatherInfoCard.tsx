@@ -5,7 +5,8 @@ import { Text, XStack, YStack } from "tamagui";
 import { CityWeatherInfo } from "../../../store/app/models/weather.type";
 
 type Props = {
-	setFavorite: (id: string, favorite: boolean) => void;
+	setFavorite: () => void;
+	updateWeatherInfo: () => void;
 };
 
 export function WeatherInfoCard({
@@ -17,6 +18,7 @@ export function WeatherInfoCard({
 	id,
 	setFavorite,
 	temperature,
+	updateWeatherInfo,
 	windSpeed
 }: CityWeatherInfo & Props): JSX.Element {
 	return (
@@ -37,10 +39,10 @@ export function WeatherInfoCard({
 							</Text>
 							<Heart
 								color={favorite ? "$red11" : undefined}
-								onPress={() => setFavorite(id, !favorite)}
+								onPress={setFavorite}
 								size="$1"
 							/>
-							<RefreshCcw size="$1" />
+							<RefreshCcw onPress={updateWeatherInfo} size="$1" />
 						</XStack>
 						<Text fontSize="$2">
 							{new Date(date).toTimeString().split(" ")[0].slice(0, 5)}
