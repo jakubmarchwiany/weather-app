@@ -1,6 +1,6 @@
 import { Droplet, Heart, RefreshCcw, Wind } from "@tamagui/lucide-icons";
 import React from "react";
-import { Text, View, XStack, YStack } from "tamagui";
+import { Text, XStack, YStack } from "tamagui";
 
 import { Weather } from "../../../store/app/models/weather.type";
 

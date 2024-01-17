@@ -3,7 +3,7 @@ import { Search } from "@tamagui/lucide-icons";
 import { Formik, FormikProps } from "formik";
 import React, { useCallback, useRef } from "react";
 import { Keyboard } from "react-native";
-import { Button, H1, Input, Text, YStack } from "tamagui";
+import { Button, Input, Text, YStack } from "tamagui";
 import { object, string } from "yup";
 
 import { getWeatherForCity } from "../../../store/app/app.action";
