@@ -21,10 +21,9 @@ type WeatherApiData = {
 export const getCityWeatherInfo =
 	(cityName: string): AppThunk =>
 	(appDispatch: (arg0: unknown) => void) => {
-		myFetch<WeatherApiData>("/weather", {
-			body: { cityName },
+		myFetch<WeatherApiData>(`/weather?cityName=${cityName}`, {
 			customError: true,
-			method: "POST"
+			method: "GET"
 		})
 			.then((resCityWeatherInfo) => {
 				const cityWeatherInfo = {
@@ -68,9 +67,9 @@ export const getCityWeatherInfo =
 export const updateCityWeatherInfo =
 	(oldCityWeatherInfo: CityWeatherInfo): AppThunk =>
 	(appDispatch: (arg0: unknown) => void) => {
-		myFetch<WeatherApiData>("/weather", {
-			body: { cityName: oldCityWeatherInfo.cityName },
-			method: "POST"
+		myFetch<WeatherApiData>(`/weather?cityName=${oldCityWeatherInfo.cityName}`, {
+			customError: true,
+			method: "GET"
 		}).then((resCityWeatherInfo) => {
 			const cityWeatherInfo = {
 				...resCityWeatherInfo,
