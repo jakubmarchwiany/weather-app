@@ -39,3 +39,10 @@ export function setFavoriteWeatherReducer(
 		)
 	};
 }
+
+export function deleteNoFavoriteCitiesReducer(state: AppState): AppState {
+	return {
+		...state,
+		weathers: [...state.weathers].filter((w) => w.favorite)
+	};
+}

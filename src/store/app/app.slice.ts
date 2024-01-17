@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
 	addWeatherReducer,
 	deleteAllDateReducer,
+	deleteNoFavoriteCitiesReducer,
 	setFavoriteWeatherReducer,
 	setThemeModeReducer
 } from "./app.reducer";
@@ -26,6 +27,7 @@ const appSlice = createSlice({
 		addWeather: addWeatherReducer,
 		deleteAllDate: deleteAllDateReducer,
 
+		deleteNoFavoriteCities: deleteNoFavoriteCitiesReducer,
 		setFavoriteWeather: setFavoriteWeatherReducer,
 		setThemeMode: setThemeModeReducer
 	}

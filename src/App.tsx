@@ -7,6 +7,7 @@ import { TamaguiProvider, Theme, View } from "tamagui";
 
 import tamaguiConfig from "./assets/tamagui.config";
 import { myThemes, navigationTheme } from "./assets/theme";
+import { useEffectDeleteNoFavoriteCities } from "./hooks/useEffectDeleteNoFavoriteCities";
 import { HomeScreen } from "./screens/home/HomeScreen";
 import { SettingsScreen } from "./screens/settings/SettingsScreen";
 import { ThemeMode } from "./store/app/models/themeMode.enum";
@@ -19,6 +20,8 @@ export default function App(): JSX.Element {
 
 	const theme = currentThemeMode == ThemeMode.LIGHT ? myThemes.light : myThemes.dark;
 	const insets = useSafeAreaInsets();
+
+	useEffectDeleteNoFavoriteCities();
 
 	return (
 		<>
