@@ -27,6 +27,7 @@
 		"@tamagui/lucide-icons": "^1.85.2",
 		"@tamagui/theme-builder": "^1.85.12",
 		"@types/uuid": "^9.0.7",
+		"babel-plugin-transform-inline-environment-variables": "^0.4.4",
 		"eslint-plugin-react-native": "^4.1.0",
 		"expo": "~49.0.15",
 		"expo-constants": "~14.4.2",
