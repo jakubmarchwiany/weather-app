@@ -7,7 +7,7 @@ type FetchMethod = "DELETE" | "GET" | "PATCH" | "POST" | "PUT";
 export async function myFetch<T>(
 	url: string,
 	options: {
-		body?: BodyInit | FormData | null;
+		body?: null | object;
 		customError?: boolean;
 		headers?: { "Content-Type": "application/json" };
 		method: FetchMethod;
@@ -15,9 +15,8 @@ export async function myFetch<T>(
 ): Promise<T> {
 	return await new Promise((resolve, reject) => {
 		fetch(API_URL + url, {
-			body: options.body,
-			credentials: "include",
-			headers: options.headers,
+			body: JSON.stringify(options.body),
+			headers: { "Content-Type": "application/json" },
 			method: options.method
 		})
 			.then(async (response) => {
@@ -31,13 +30,13 @@ export async function myFetch<T>(
 					// }
 
 					if (options.customError !== undefined) {
-						reject(data);
+						reject({ ...data, statusCode: response.status });
 					}
 				}
 			})
 			.catch((error) => {
 				if (options.customError !== undefined) {
-					reject(error);
+					reject({ ...error, statusCode: 500 });
 				}
 			});
 	});
