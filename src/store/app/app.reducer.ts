@@ -21,3 +21,7 @@ export function addWeatherReducer(
 
 	state.weathers = [weather, ...state.weathers];
 }
+
+export function deleteAllDateReducer(state: AppState): void {
+	state.weathers = [];
+}

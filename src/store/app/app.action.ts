@@ -2,6 +2,7 @@ import { Alert } from "react-native";
 
 import { AppThunk } from "..";
 import { myFetch } from "../../utilities/myFetch";
+import { appActions } from "./app.slice";
 import { Weather } from "./models/weather.type";
 
 type WeatherApiData = {
@@ -26,7 +27,7 @@ export const getWeatherForCity =
 					favorite: false
 				} as Weather;
 
-				throw new Error();
+				appDispatch(appActions.addWeather({ weather: fullWeather }));
 			})
 			.catch((e) => {
 				Alert.alert("Error", "Failed to download the weather", [
