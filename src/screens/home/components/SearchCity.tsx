@@ -44,9 +44,7 @@ export function SearchCity(): JSX.Element {
 			validationSchema={SEARCH_CITY_VALIDATION}
 		>
 			{({ dirty, errors, handleBlur, handleChange, handleSubmit, isValid, values }) => (
-				<YStack space="$3">
-					<H1 textAlign="center">Search City</H1>
-
+				<YStack marginTop="$2" space="$1.5">
 					<Input
 						backgroundColor="$blue4"
 						onBlur={handleBlur("text")}
