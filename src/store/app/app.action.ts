@@ -1,6 +1,7 @@
+import { Alert } from "react-native";
+
 import { AppThunk } from "..";
 import { myFetch } from "../../utilities/myFetch";
-import { appActions } from "./app.slice";
 import { Weather } from "./models/weather.type";
 
 type WeatherApiData = {
@@ -19,19 +20,27 @@ export const getWeatherForCity =
 			method: "POST"
 		})
 			.then((weatherInfo) => {
-				console.log("weatherInfo", weatherInfo);
-
 				const fullWeather = {
 					...weatherInfo,
 					cityName,
 					favorite: false
 				} as Weather;
 
-				console.log("weatherInfo ", fullWeather);
-
-				appDispatch(appActions.addWeather({ weather: fullWeather }));
+				throw new Error();
 			})
 			.catch((e) => {
-				console.log(e);
+				Alert.alert("Error", "Failed to download the weather", [
+					{
+						style: "cancel",
+						text: "Cancel"
+					},
+					{
+						onPress: (): void => {
+							appDispatch(getWeatherForCity(cityName));
+						},
+						style: "default",
+						text: "Try again"
+					}
+				]);
 			});
 	};
