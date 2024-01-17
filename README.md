@@ -7,6 +7,8 @@
 ### Requirements
 
 1. android or ios device / emulators
+2. create .env
+3. add API_URL (no localhost -> 192.168.x.x)
 
 ### bun (prefer)
 
