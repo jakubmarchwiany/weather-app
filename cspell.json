@@ -10,7 +10,8 @@
 		"Tamagui",
 		"uuidv",
 		"formik",
-		"persistor"
+		"persistor",
+		"Wroclaw"
 	],
 	"ignorePaths": [
 		"node_modules",
